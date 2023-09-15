@@ -1,19 +1,56 @@
 <template>
-  <v-btn @click="toggleTheme">toggle theme</v-btn>
-  <HelloWorld />
-  <v-locale-provider locale="es">
-    <v-date-picker show-adjacent-months></v-date-picker>
-  </v-locale-provider>
+  <app-bar style="position: fixed; top: 0; width: 100%; z-index: 100;"/>
+  <div>
+    <v-row justify="center" class="mt-6">
+      <v-col cols="12" sm="8" md="6">
+        <v-sheet elevation="0" class="pa-4">
+          <h2 class="headline text-center sticky-header">Seleccione el contrato que desee abonar</h2>
+        </v-sheet>
+      </v-col>
+    </v-row>  
+    <v-row justify="center">
+      <v-col cols="12" sm="10" md="8">
+        <list-contract />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
-<script lang="ts" setup>
-import HelloWorld from '@/components/HelloWorld.vue'
-import { VDatePicker } from 'vuetify/labs/VDatePicker'
-import { useTheme } from 'vuetify'
+<script>
+import ListContract from '@/components/lists/ListContracts.vue';
+import AppBar from '@/components/AppBar.vue';
 
-const theme = useTheme()
+export default {
+  
+  components: {
+    ListContract,
+    AppBar,
+  },
 
-function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-}
+};
 </script>
+    
+
+<style scoped>
+@media screen and (min-width: 1200px) {
+  .mt-6 {
+    margin-top: 80px;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+
+  .sticky-header {
+    position: sticky;
+    top: 80px;
+    padding: 10px 0;
+    z-index: 99; /* Ajusta el valor de z-index */
+  }
+
+  .v-col {
+    padding: 0 30px;
+  }
+}
+</style>
+
