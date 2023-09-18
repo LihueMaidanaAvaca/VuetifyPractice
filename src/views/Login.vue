@@ -3,22 +3,14 @@
     <v-row justify="center" :align="'end'">
       <v-col cols="12" sm="8" md="6">
         <div class="login-image-container text-center">
-          <img
-            class="login-image"
-            src="@/assets/logoaabe2.png"
-            alt="Login Image"
-          />
+          <img class="login-image" src="@/assets/logoaabe2.png" alt="Login Image" />
         </div>
         <v-form class="login-form" @submit.prevent="handleSubmit">
           <v-text-field v-model="cuil" label="CUIT/CUIL"></v-text-field>
-          <v-text-field
-            v-model="password"
-            label="Password"
-            type="password"
-          ></v-text-field>
+          <v-text-field v-model="password" label="Password" type="password"></v-text-field>
           <v-btn type="submit" color="cyan darken-1">Login</v-btn>
         </v-form>
-        <router-link to="home" class="link" style="color: #00bcd4;">
+        <router-link to="home" class="link" style="color: #00bcd4">
           Recuperar contraseña
         </router-link>
       </v-col>
@@ -33,18 +25,18 @@
 export default {
   data() {
     return {
-      cuil: "",
-      password: "",
-    };
+      cuil: '',
+      password: ''
+    }
   },
   computed: {
     hasAuthToken() {
-      return localStorage.getItem("authToken") !== null;
-    },
+      return localStorage.getItem('authToken') !== null
+    }
   },
   created() {
     if (this.hasAuthToken) {
-      this.redirectToHome();
+      this.redirectToHome()
     }
   },
   methods: {
@@ -59,31 +51,31 @@ export default {
         // Supongamos que el servidor devuelve un token o algún indicador de autenticación exitosa
         // const isAuthenticated = response.data.isAuthenticated;
 
-        const isAuthenticated = this.cuil === this.password;
+        const isAuthenticated = this.cuil === this.password
 
         if (isAuthenticated) {
           // Simulación de un token (reemplaza con el token real del servidor)
-          const authToken = "mi-token-secreto";
+          const authToken = 'mi-token-secreto'
 
           // Guardar el token en el localStorage
-          localStorage.setItem("authToken", authToken);
+          localStorage.setItem('authToken', authToken)
 
           // Redirigir a la página de inicio después de un inicio de sesión exitoso
-          this.$router.push("/home");
+          this.$router.push('/home')
         } else {
           // Manejar caso de autenticación fallida si es necesario
           // Por ejemplo, mostrar un mensaje de error al usuario
         }
       } catch (error) {
-        console.error("Error de autenticación:", error);
+        console.error('Error de autenticación:', error)
         // Manejar errores de autenticación si es necesario
       }
     },
     redirectToHome() {
-      this.$router.push("/home"); // Cambia '/home' por tu ruta de inicio
-    },
-  },
-};
+      this.$router.push('/home') // Cambia '/home' por tu ruta de inicio
+    }
+  }
+}
 </script>
 
 
@@ -108,7 +100,8 @@ export default {
   text-decoration: underline;
 }
 
-.link:hover { /* Cambia el color al hacer hover (opcional) */
+.link:hover {
+  /* Cambia el color al hacer hover (opcional) */
   color: primary; /* Puedes cambiarlo a otro color si lo deseas */
 }
 
