@@ -75,7 +75,7 @@
           hide-details
         >
       </v-text-field>
-      <v-date-picker v-model="due">jiji</v-date-picker>
+      <v-date-picker v-model="due"></v-date-picker>
         <v-text-field
           v-model="payment"
           :rules="nameRules"
@@ -92,7 +92,7 @@
           :label="`Pagara con ${selectedOption}`"
           id="vep-switch"
         ></v-switch>
-        <v-btn type="submit" block class="mt-2">Submit</v-btn>
+        <v-btn type="submit" block class="mt-2">Generar Ticket</v-btn>
       </v-form>
     </v-card>
   </v-dialog>

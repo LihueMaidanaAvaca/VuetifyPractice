@@ -7,6 +7,7 @@
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
+import { VDatePicker } from 'vuetify/labs/VDatePicker'
 
 // Composables
 import { createVuetify } from 'vuetify'
@@ -15,6 +16,9 @@ const savedTheme = localStorage.getItem('theme');
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
+  components: {
+    VDatePicker,
+  },
   theme: {
     themes: {
       light: {
