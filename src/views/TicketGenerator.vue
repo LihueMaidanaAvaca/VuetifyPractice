@@ -1,17 +1,38 @@
 <template>
-  <v-dialog v-model="showTicketModal" max-width="400">
-    <v-card>
-      <v-form v-model="valid">
-        <v-text-field v-model="date" :rules="nameRules" :counter="10" label="Fecha aproximada de pago" required
-          hide-details></v-text-field>
-        <v-text-field v-model="payment" :rules="nameRules" :counter="10" label="Cifra a pagar" required
-          hide-details></v-text-field>
-        <v-switch v-model="selectedOption" hide-details true-value="Boleta" false-value="VEP"
-          :label="`Pagara con ${selectedOption}`" id="vep-switch"></v-switch>
-        <v-btn type="submit" block class="mt-2">Submit</v-btn>
-      </v-form>
-    </v-card>
-  </v-dialog>
+  <app-bar />
+  <v-container>
+    <v-row>
+        <v-card>
+          <v-form v-model="valid">
+            <v-text-field
+              v-model="date"
+              :rules="nameRules"
+              :counter="10"
+              label="Fecha aproximada de pago"
+              required
+              hide-details
+            ></v-text-field>
+            <v-text-field
+              v-model="payment"
+              :rules="nameRules"
+              :counter="10"
+              label="Cifra a pagar"
+              required
+              hide-details
+            ></v-text-field>
+            <v-switch
+              v-model="selectedOption"
+              hide-details
+              true-value="Boleta"
+              false-value="VEP"
+              :label="`Pagara con ${selectedOption}`"
+              id="vep-switch"
+            ></v-switch>
+            <v-btn type="submit" block class="mt-2">Submit</v-btn>
+          </v-form>
+        </v-card>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
