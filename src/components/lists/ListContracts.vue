@@ -34,7 +34,9 @@ export default {
   name: 'ListContract',
   methods: {
     redirectToResume(contract) {
+      console.log("id", contract.id)
       this.$router.push({ name: 'PaymentSelector', params: { id: contract.id } });
+      
     },
   },
   data() {

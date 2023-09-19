@@ -22,7 +22,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "history" */ '@/views/History.vue'),
       },
       {
-        path: '/payselector',
+        path: '/payselector/:id',
         name: 'PaymentSelector',
         component: () => import(/* webpackChunkName: "payments" */ '@/views/PaymentSelector.vue'),
       },

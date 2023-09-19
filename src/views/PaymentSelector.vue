@@ -34,19 +34,6 @@
               <v-btn color="primary" @click="continueToGenerator"> Continuar </v-btn>
             </v-card-text>
           </v-card>
-
-          <!-- <v-card v-if="panels[1].isSelected" class="mb-3" elevation="3">
-                <v-card-title>Seleccione las cuotas a abonar</v-card-title>
-                <v-card-text>
-                  Contenido del método de pago: Pago en cuotas fijas.
-                </v-card-text>
-              </v-card>
-              <v-card v-if="panels[2].isSelected" class="mb-3" elevation="3">
-                <v-card-title>Seleccione las cuotas a abonar</v-card-title>
-                <v-card-text>
-                  Contenido del método de pago: Pago en cuotas variables.
-                </v-card-text>
-              </v-card> -->
         </v-col>
         <v-col cols="12" md="4">
           <!-- Contenedor de los checkboxes -->
@@ -65,17 +52,19 @@
   </v-container>
   <v-dialog v-model="showForm" max-width="500">
     <v-card>
+      <v-col>
+        <v-date-picker v-model="due" ></v-date-picker>
+      </v-col>
       <v-form v-model="valid">
         <v-text-field
           :value="due"
-          :rules="nameRules"
+          :rules="dateRules"
           :counter="10"
           label="Fecha aproximada de pago"
           required
           hide-details
         >
       </v-text-field>
-      <v-date-picker v-model="due"></v-date-picker>
         <v-text-field
           v-model="payment"
           :rules="nameRules"
@@ -135,6 +124,7 @@ export default {
   computed: {
     contract() {
       const contractId = parseInt(this.$route.params.id, 10)
+      console.log("id", contractId)
       return mockData.find((contract) => contract.id === contractId) || {}
     }
   },
@@ -159,26 +149,4 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos específicos de este componente */
-/* Cambia el color de fondo del datepicker */
-.v-picker__body {
-  background-color: #be2424;
-}
-
-/* Cambia el color del texto del datepicker */
-.v-picker__body .v-btn__content {
-  color: #333;
-}
-
-/* Cambia el color del botón de selección de fecha */
-.v-picker__actions .v-btn {
-  background-color: #007bff;
-  color: #fff;
-}
-
-/* Cambia el color de fondo del día seleccionado */
-.v-picker--date .v-btn--active {
-  background-color: #007bff;
-  color: #fff;
-}
 </style>
